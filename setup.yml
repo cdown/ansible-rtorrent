@@ -13,6 +13,6 @@
       with_items:
         - ~rtorrent/data
         - ~rtorrent/session
-    - copy: src=files/init dest=/etc/init.d/rtorrent owner=root group=root
+    - copy: src=files/init dest=/etc/init.d/rtorrent owner=root group=root mode=0755
     - service: name=rtorrent state=started enabled=yes
     - copy: src=files/attach_rtorrent dest=/usr/local/bin/attach_rtorrent owner=root group=root mode=0755
