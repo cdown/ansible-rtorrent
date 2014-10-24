@@ -1,0 +1,25 @@
+#!/bin/bash -e
+
+playbook_dir=$(mktemp -d)
+backports_list=/etc/apt/sources.list.d/wheezy-backports.list
+packages=(ansible python-passlib git)
+
+cleanup() {
+    rm -rf "$playbook_dir" "$backports_list"
+    apt-get update
+}
+
+trap cleanup 0
+
+cat > "$backports_list" << 'EOF'
+deb http://ftp.uk.debian.org/debian wheezy-backports main
+EOF
+
+apt-get update
+apt-get -y install "${packages[@]}"
+
+cd "$playbook_dir"
+
+wget -qO- https://github.com/cdown/ansible-rtorrent/tarball/master | tar xvz --strip-components 1
+
+ansible-playbook -i localhost, -v setup.yml

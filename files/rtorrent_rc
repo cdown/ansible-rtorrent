@@ -1,0 +1,11 @@
+min_peers = 100
+max_peers = 500
+max_uploads = 50
+
+port_random = yes
+
+dht = auto
+peer_exchange = yes
+
+session = /srv/rtorrent/session
+directory = /srv/rtorrent/data
