@@ -7,7 +7,7 @@ machine.
 
 Run on the machine:
 
-    curl -o /tmp/setup https://bit.ly/1FMk6CC
+    curl -Lo /tmp/setup https://bit.ly/1FMk6CC
     $EDITOR /tmp/setup # don't just run arbitrary scripts from the internet...
     chmod a+x /tmp/setup
     /tmp/setup
